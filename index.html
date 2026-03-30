@@ -2,14 +2,169 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://pgr21.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="3; url=https://pgr21.com">
   <link rel="canonical" href="https://pgr21.com">
-  <title>gpt21.kr → pgr21.com</title>
+  <title>GPT21 → PGR21.com</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;
+      background: #1a2536;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 로고 */
+    .logo {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+      animation: fadeInDown 0.6s ease-out;
+    }
+    .logo .gpt { color: #7eb8e0; }
+    .logo .num { color: #fff; }
+
+    .subtitle {
+      font-size: 13px;
+      color: #5a7a9a;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      animation: fadeInDown 0.6s ease-out 0.15s both;
+    }
+
+    /* 구분선 */
+    .line {
+      width: 40px;
+      height: 2px;
+      background: #3c5068;
+      margin: 0 auto 32px;
+      animation: fadeIn 0.6s ease-out 0.3s both;
+    }
+
+    /* 안내 텍스트 */
+    .message {
+      font-size: 16px;
+      color: #c8d8e8;
+      margin-bottom: 8px;
+      animation: fadeIn 0.6s ease-out 0.4s both;
+    }
+    .message a {
+      color: #7eb8e0;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .message a:hover {
+      color: #a8d8f8;
+      text-decoration: underline;
+    }
+
+    .redirect-info {
+      font-size: 12px;
+      color: #4a6580;
+      margin-top: 12px;
+      animation: fadeIn 0.6s ease-out 0.5s both;
+    }
+    .redirect-info .countdown {
+      display: inline-block;
+      color: #7eb8e0;
+      font-weight: bold;
+      min-width: 12px;
+    }
+
+    /* 프로그레스 바 */
+    .progress-wrap {
+      width: 200px;
+      height: 3px;
+      background: #2b3a4e;
+      border-radius: 2px;
+      margin: 16px auto 0;
+      overflow: hidden;
+      animation: fadeIn 0.6s ease-out 0.5s both;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #7eb8e0;
+      border-radius: 2px;
+      animation: fillBar 3s linear 0.6s forwards;
+    }
+
+    /* 배경 장식 */
+    .bg-circle {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(126,184,224,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bg-circle-1 {
+      width: 600px; height: 600px;
+      top: -200px; right: -150px;
+    }
+    .bg-circle-2 {
+      width: 400px; height: 400px;
+      bottom: -100px; left: -100px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fillBar {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-  <p><a href="https://pgr21.com">안녕하세요. GPT21(구 PGR21)입니다.</a></p>
-  <script>
-    window.location.replace("https://pgr21.com");
-  </script>
+
+<div class="bg-circle bg-circle-1"></div>
+<div class="bg-circle bg-circle-2"></div>
+
+<div class="container">
+  <div class="logo"><span class="gpt">GPT</span><span class="num">21</span></div>
+  <div class="subtitle">Generative PGR Transformer 21</div>
+  <div class="line"></div>
+  <div class="message">안녕하세요 <a href="https://pgr21.com">GPT21(구 PGR21)</a>입니다</div>
+  <div class="redirect-info">
+    <span class="countdown" id="countdown">3</span>초 후 이동합니다
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"></div>
+  </div>
+</div>
+
+<script>
+  var sec = 3;
+  var el = document.getElementById('countdown');
+  var timer = setInterval(function() {
+    sec--;
+    if (sec <= 0) {
+      clearInterval(timer);
+      window.location.replace("https://pgr21.com");
+    } else {
+      el.textContent = sec;
+    }
+  }, 1000);
+</script>
+
 </body>
 </html>
